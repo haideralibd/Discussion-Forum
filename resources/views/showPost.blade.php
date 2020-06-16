@@ -35,7 +35,9 @@
     </div>
   </article>
 
+
   @include('comments')
+
   <hr>
 
   @endsection

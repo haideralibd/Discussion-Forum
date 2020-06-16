@@ -16,6 +16,9 @@
     @continue($loop->last)
     <hr>
 @endforeach
+
+
+@auth
 <hr>
 
 <div class="col-lg-6 col-md-8 mx-auto" id="add-comment">
@@ -31,3 +34,4 @@
         </div>            
     </form>
 </div>
+@endauth
