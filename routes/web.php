@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -14,12 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::post('/comments/{postID}', 'CommentsController@store');
+
+
+Route::get('/', 'PostsController@index');
+Route::get('/posts/{post}', 'PostsController@show');
 
 Route::view('/createArticles','createArticles');
+
+
+
 
 Route::get('/test', function(Request $request){
     return view('test', ['name' => $request->testdata ]);
 });
+
+Auth::routes();
+
+Route::get('/home', 'PostsController@index')->name('home');
