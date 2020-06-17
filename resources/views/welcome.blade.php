@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('homepage')
-    
       <!-- Page Header   -->  
 <header class="masthead" style="background-image: url({{asset('/images/home-bg.jpg')}}) ">
     <div class="overlay"></div>

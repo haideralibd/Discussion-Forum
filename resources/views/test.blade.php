@@ -10,12 +10,7 @@
 <body>
     
     <div style="padding:300px; padding-top:0px;">
-        <p>
-            <?php
-                echo $name; 
-            ?>
-
-        </p>
+        {!!  $posts   !!}
     </div>
 </body>
 </html>

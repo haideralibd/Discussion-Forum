@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('showArticle')
+@section('showPost')
     
 <!-- Page Header -->
 <header class="masthead" style="background-image: url({{asset('/images/post-bg.jpg')}})">

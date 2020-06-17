@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\PostsController;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,14 +23,10 @@ Route::post('/comments/{postID}', 'CommentsController@store');
 Route::get('/', 'PostsController@index');
 Route::get('/posts/{post}', 'PostsController@show');
 
-Route::view('/createArticles','createArticles');
+Route::view('/createPost','createPost')->middleware('auth');
+Route::post('/submitPost', 'PostsController@store');
 
 
-
-
-Route::get('/test', function(Request $request){
-    return view('test', ['name' => $request->testdata ]);
-});
 
 Auth::routes();
 

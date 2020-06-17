@@ -20,6 +20,8 @@
   <!-- Custom styles for this template -->
   <link href="{{ asset('/css/clean-blog.min.css')}}" rel="stylesheet">
 
+  
+
 </head>
 
 <body>
@@ -34,27 +36,31 @@
       <div class="collapse navbar-collapse" id="navbarResponsive">
         <ul class="navbar-nav ml-auto">
           <li class="nav-item">
-            <a class="nav-link" href="/">Home</a>
+            <a class="nav-link {{ Request::is('/') ? 'text-info' : '' }}" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="about.html">About</a>
+            <a class="nav-link {{ Request::is('/about') ? 'text-info' : '' }}" href="about.html">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="contact.html">Contact</a>
+            <a class="nav-link {{ Request::is('/contact') ? 'text-info' : '' }}" href="contact.html">Contact</a>
           </li>
                         <!-- Authentication Links -->
 
-                        @guest
+          @guest
           <li class="nav-item">
-          <a class="nav-link" href="{{ asset('login')}}">Login</a>
+          <a class="nav-link {{ Request::is('login') ? 'text-info' : '' }}" href="{{ asset('login')}}">Login</a>
           </li>
           @if (Route::has('register'))
 
           <li class="nav-item">
-            <a class="nav-link" href="{{ asset('register')}}">Register</a>
+            <a class="nav-link {{ Request::is('register') ? 'text-info' : '' }}" href="{{ asset('register')}}">Register</a>
           </li>
           @endif
           @else
+          <li class="nav-item">
+            <a class="nav-link {{ Request::is('createPost') ? 'text-info' : '' }}" href="/createPost">Create Post</a>
+          </li>
+
           <li class="nav-item dropdown">
               <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                   {{ Auth::user()->name }} <span class="caret"></span>
@@ -80,7 +86,7 @@
 
 
   @yield('homepage')
-  @yield('showArticle')
+  @yield('showPost')
 
   @yield('content')
   
