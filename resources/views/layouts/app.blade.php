@@ -68,7 +68,7 @@
               </a>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="/usersPosts">
+                  <a class="dropdown-item" href="/allPosts">
                     {{ __('My Posts') }}
                 </a>
                 <hr>

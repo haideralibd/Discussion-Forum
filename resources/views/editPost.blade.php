@@ -18,11 +18,11 @@
 </head>
 <body>
     <div>
-        <form action="/submitPost" method="post" >
+        <form action="/updatePost/{{$post->id}}" method="post" >
             @csrf
             <div class="form-group">
                 <label for="usr">Title:</label>
-                <input type="text" class="form-control" id="usr" name="title" required>
+                <input type="text" class="form-control" id="usr" name="title" required value="{{$post->title}}">
             </div>
 
             <div class="form-group">
@@ -39,7 +39,7 @@
 
             <div class="form-group">
                 <label for="usr">Write Post:</label>
-                <textarea name="body"></textarea>
+            <textarea name="body">{{ $post->body}}</textarea>
             </div>  
 
             <div class="text-center"> 
