@@ -1,5 +1,5 @@
 @extends('layouts.app')
-@section('homepage')
+@section('content')
       <!-- Page Header   -->  
 <header class="masthead" style="background-image: url({{asset('/images/home-bg.jpg')}}) ">
     <div class="overlay"></div>
@@ -36,7 +36,16 @@
           <p class="post-meta">Posted by
             <a href="#">{{ $post->user->name  }}</a>
           on {{ $post->updated_at->format('M d, Y')}}
+          <span class="post-meta text-danger">       
+            @if (empty($post->category->name))
+                {{''}}
+            @else
+            {{$post->category->name }}
+  
+            @endif
+          </span>
         </p>
+
         </div>
         <hr>
 
@@ -51,5 +60,4 @@
     </div>
   </div>
 
-  <hr>
 @endsection

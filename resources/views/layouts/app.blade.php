@@ -8,7 +8,7 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Clean Blog - Start Bootstrap Theme</title>
+  <title>Discussion Forum</title>
 
   <!-- Bootstrap core CSS -->
 <link href="{{ asset('/css/bootstrap/bootstrap.min.css')}}" rel="stylesheet">
@@ -27,9 +27,10 @@
 <body>
 
   <!-- Navigation -->
+  
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
     <div class="container">
-      <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <button class="navbar-toggler navbar-toggler-right text-light" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
       </button>
@@ -67,7 +68,15 @@
               </a>
 
               <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                  <a class="dropdown-item" href="{{ route('logout') }}"
+                  <a class="dropdown-item" href="/usersPosts">
+                    {{ __('My Posts') }}
+                </a>
+                <hr>
+                <a class="dropdown-item" href="/categories">
+                  {{ __('Categories') }}
+              </a>
+              <hr>
+              <a class="dropdown-item mb-2 text-danger" href="{{ route('logout') }}"
                      onclick="event.preventDefault();
                                    document.getElementById('logout-form').submit();">
                       {{ __('Logout') }}
@@ -77,6 +86,7 @@
                       @csrf
                   </form>
               </div>
+
           </li> 
           @endguest
         </ul>
@@ -84,14 +94,11 @@
     </div>
   </nav>
 
-
-  @yield('homepage')
-  @yield('showPost')
-
   @yield('content')
-  
   <!-- Footer -->
   <footer>
+  <hr>
+
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">

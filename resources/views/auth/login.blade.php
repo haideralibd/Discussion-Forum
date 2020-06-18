@@ -47,6 +47,9 @@
                                     <label class="form-check-label" for="remember">
                                         {{ __('Remember Me') }}
                                     </label>
+                                    <a class="btn btn-link d-inline" href="/register">
+                                        {{ __('Register') }}
+                                    </a>
                                 </div>
                             </div>
                         </div>

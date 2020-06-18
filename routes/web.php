@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostsController;
 use App\Post;
@@ -23,10 +24,12 @@ Route::post('/comments/{postID}', 'CommentsController@store');
 Route::get('/', 'PostsController@index');
 Route::get('/posts/{post}', 'PostsController@show');
 
-Route::view('/createPost','createPost')->middleware('auth');
+Route::get('/createPost','PostsController@create')->middleware('auth');
 Route::post('/submitPost', 'PostsController@store');
 
 
+Route::get('/categories', 'CategoryController@index');
+Route::post('/categories/add','CategoryController@store');
 
 Auth::routes();
 

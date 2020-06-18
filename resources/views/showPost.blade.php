@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('showPost')
+@section('content')
     
 <!-- Page Header -->
 <header class="masthead" style="background-image: url({{asset('/images/post-bg.jpg')}})">
@@ -15,7 +15,19 @@
             </h2>
             <span class="meta">Posted by
               <a href="#">{{ $post->user->name  }}</a>
-              on {{ $post->updated_at->format('M d, Y')}}</span>
+              on {{ $post->updated_at->format('M d, Y')}}
+            </span>
+            <span class="">Category: 
+              
+              @if (empty($post->category->name))
+                  {{''}}
+              @else
+              {{$post->category->name }}
+
+              @endif
+
+            </span>
+
           </div>
         </div>
       </div>
@@ -37,7 +49,6 @@
 
 
   @include('comments')
-
-  <hr>
+  
 
   @endsection
