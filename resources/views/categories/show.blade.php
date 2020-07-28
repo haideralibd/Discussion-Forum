@@ -5,16 +5,16 @@
 <div class="row mx-auto p-4"   style="margin-top: 80px; margin-bottom: 50px;" >
     <div class="col-md-8">
         <h3 class="text-muted text-center">Categories</h3>           
-        <table class="table table-hover table-bordered table-sm">
+        <table class="table table-hover table-bordered table-sm shadow">
           <thead class="thead-dark">
-            <tr>
+            <tr align="center">
               <th>SL.</th>
               <th>Name</th>
             </tr>
           </thead>
             <tbody>
               @foreach ($categories as $category)
-                <tr>
+                <tr align="center">
                     <td>
                         {{ $loop->iteration }}
                     </td>
@@ -24,8 +24,10 @@
             </tbody>
         </table> 
   </div>
+ 
+
   <div class="col-md-3 mx-auto">
-    <div class="well bg-light">
+    <div class="shadow well bg-light">
         <form action="/categories/add" method="post" class="form-horizontal" id="addCategory" role="form"> 
                 @csrf
                 <div class="p-4 pb-0">

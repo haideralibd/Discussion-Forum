@@ -18,17 +18,18 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::post('/comments/{postID}', 'CommentsController@store');
+Route::post('/comments/{postID}', 'CommentsController@store')->middleware('auth');
 
 
 Route::get('/', 'HomeController@index');
+
 Route::get('/createPost','PostsController@create')->middleware('auth');
 Route::post('/submitPost', 'PostsController@store');
-Route::get('/allPosts','PostsController@index');
-Route::get('/editPost/{post}','PostsController@edit');
+Route::get('/allPosts','PostsController@index')->middleware('auth');
+Route::get('/editPost/{post}','PostsController@edit')->middleware('auth');
 Route::post('/updatePost/{id}', 'PostsController@update')->middleware('auth');
 Route::get('/posts/{post}', 'PostsController@show')->name('specificPost');
-Route::post('/deletePost/{post}', 'PostsController@delete');
+Route::post('/deletePost/{post}', 'PostsController@delete')->middleware('auth');
 
 
 

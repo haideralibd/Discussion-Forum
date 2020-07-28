@@ -2,12 +2,10 @@
     @if($loop->first)
         <hr class="">
     @endif
-        <div class="col-lg-6 col-md-8 mx-auto">
-        <header style="display: flex; justify-content: space-between;">
+        <div class="col-lg-6 col-md-8 mx-auto bg-light">
         
-            <p class="m-0"><bold>{{ $comment->user->name }} said ... </bold></p>
+            <p class="m-0"><small><strong>{{ $comment->user->name }} said... </strong></small></p>
         
-        </header>
         <small>
         {{ $comment->body }}
         </small>
@@ -24,7 +22,7 @@
 <form action="/comments/{{ $post->id }}" method="post" class="form-horizontal" id="commentForm" role="form"> 
         @csrf
         <div class="form-group">
-              <textarea class="form-control" onclick="location.href = '/login';" name="addComment" id="addComment" rows="5" placeholder="Write a comment..."></textarea>
+              <textarea class="form-control shadow" onclick="location.href = '/login';" name="addComment" id="addComment" rows="5" placeholder="Write a comment..."></textarea>
         </div>           
     </form>
 </div>
@@ -37,11 +35,11 @@
 <form action="/comments/{{ $post->id }}" method="post" class="form-horizontal" id="commentForm" role="form"> 
         @csrf
         <div class="form-group">
-              <textarea class="form-control" name="addComment" id="addComment" rows="5" placeholder="Write a comment..."></textarea>
+              <textarea class="form-control shadow" name="addComment" id="addComment" rows="5" placeholder="Write a comment..." required></textarea>
         </div>
         <div class="form-group">
             <div class="col-sm-10">                    
-                <button class="btn btn-success btn-circle text-uppercase" type="submit" id="submitComment"><span class="glyphicon glyphicon-send"></span> Summit comment</button>
+                <button class="btn btn-success text-uppercase btn-sm" type="submit" id="submitComment">post comment</button>
             </div>
         </div>            
     </form>

@@ -18,16 +18,16 @@
 </head>
 <body>
     <div>
-        <form action="/submitPost" method="post" >
+        <form action="/submitPost" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
                 <label for="usr">Title:</label>
                 <input type="text" class="form-control" id="usr" name="title" required>
             </div>
-
             <div class="form-group">
                 <label for="category">Category</label>
                 <select id="category" name="category" class="form-control">
+                    <option hidden disabled selected value>Select a Category</option>
                     @foreach ($categories as $category)
                     <option value="{{$category->id}}">
                         {{$category->name}}
@@ -38,12 +38,16 @@
                 </div>
 
             <div class="form-group">
+                <label class="file">Upload Image.</label>
+                <input type="file" class="form-control-file">
+            </div>
+            <div class="form-group">
                 <label for="usr">Write Post:</label>
                 <textarea name="body"></textarea>
             </div>  
 
-            <div class="text-center"> 
-            <button type="submit" class="btn btn-primary col-lg-8 col-sm-4">Publish</button>
+            <div class="text-center "> 
+            <button type="submit" class="shadow btn btn-primary col-lg-8 col-sm-4">Publish</button>
             </div>
 
         </form>
