@@ -17,6 +17,6 @@ class CommentsController extends Controller
          
          $newComment->save();
 
-         return redirect('/');
+         return redirect()->route('specificPost',['post'=>$postid]);
     }
 }

@@ -22,6 +22,8 @@ Route::post('/comments/{postID}', 'CommentsController@store')->middleware('auth'
 
 
 Route::get('/', 'HomeController@index');
+Route::post('/search', 'HomeController@searchPosts')->name('search-posts');
+
 
 Route::get('/createPost','PostsController@create')->middleware('auth');
 Route::post('/submitPost', 'PostsController@store');

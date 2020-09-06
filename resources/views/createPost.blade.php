@@ -39,8 +39,9 @@
 
             <div class="form-group">
                 <label class="file">Upload Image.</label>
-                <input type="file" class="form-control-file">
+                <input type="file" class="form-control-file" name="image">
             </div>
+            
             <div class="form-group">
                 <label for="usr">Write Post:</label>
                 <textarea name="body"></textarea>

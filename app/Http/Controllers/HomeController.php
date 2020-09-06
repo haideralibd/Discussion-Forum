@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use Illuminate\Http\Request;
+use SebastianBergmann\Environment\Console;
 
 class HomeController extends Controller
 {
@@ -23,9 +25,17 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('welcome', [
-            'posts' => Post::all()
-            ]);
+        $posts = Post::paginate(6);
+        return view('welcome', ['posts'=>$posts]);
+
+    }
+
+    public function searchPosts(Request $request)
+    {
+       
+       $posts = Post::where('title', 'like', '%' . $request->get('searchQuest') . '%')->get(); 
+
+        return json_encode( $posts );
     }
   
 

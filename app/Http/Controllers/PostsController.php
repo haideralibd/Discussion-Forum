@@ -6,6 +6,7 @@ use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 use Mews\Purifier\Facades\Purifier;
 
 class PostsController extends Controller
@@ -46,16 +47,20 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $post = new Post;
-
+        
         $post->user_id = auth()->user()->id;
         $post->title = $request->title;
         $post->body = Purifier::clean($request->body);
         $post->category_id = $request->category;
+        if($request->hasFile('image')){
+
+        $post->image = $request->file('image')->store('images', 'public');
+        }
+
 
         $post->save();
 
-        return redirect()->route('specificPost', ['post' => $post->id]);
-
+        return redirect()->route('specificPost', ['post' => $post->id]); 
     }
 
     public function update(Request $request,$id)
@@ -65,6 +70,14 @@ class PostsController extends Controller
         $post->body = Purifier::clean($request->body);
         $post->category_id = $request->category;
         $post->updated_at = \Carbon\Carbon::now();
+        
+        if($request->hasFile('image')){
+
+            Storage::delete('/public/'.$post->image);
+            $post->image = $request->file('image')->store('images', 'public');
+
+        }
+        
         $post->save();
 
         return redirect()->route('specificPost', ['post' => $post->id]);

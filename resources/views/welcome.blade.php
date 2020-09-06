@@ -19,8 +19,20 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-md-10 mx-auto">
-      <p class="text-muted">Recent Posts:</p>
+      <div class="input-group input-group-sm">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+        </div>
+        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="searchPosts" id="searchPosts" >
 
+      </div>
+
+      <div style="padding-left: 25px">
+        <ul style="list-style-type:none;" id="searchResult"></ul>
+      </div>
+      <div>
+              
+      </div>
 
       @foreach ($posts as $post)
           
@@ -54,10 +66,9 @@
         
         <!-- Pager -->
         <div class="clearfix">
-          <a class="btn btn-primary float-right" href="#">Older Posts &rarr;</a>
+          {{ $posts->links() }} 
         </div>
       </div>
     </div>
-  </div>
-
+  </div>  
 @endsection

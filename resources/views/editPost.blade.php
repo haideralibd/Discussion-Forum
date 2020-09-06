@@ -18,7 +18,7 @@
 </head>
 <body>
     <div>
-        <form action="/updatePost/{{$post->id}}" method="post" >
+        <form action="/updatePost/{{$post->id}}" method="post" enctype="multipart/form-data" >
             @csrf
             <div class="form-group">
                 <label for="usr">Title:</label>
@@ -40,6 +40,16 @@
 
                 </select>
                 </div>
+                {{-- <div class="form-group" style="display: inline-block">
+                    <label>Post Image.</label>
+                    <img src="{{asset('storage/'.$post->image)}}" class="img-thumbnail"   width="304" height="236"> 
+                  </div> --}}
+
+                <div class="form-group" style="display: inline-block;">
+                    <label class="file">Change Image.</label>
+                    <input type="file" class="form-control-file" name="image">
+                </div>
+
 
             <div class="form-group">
                 <label for="usr">Write Post:</label>

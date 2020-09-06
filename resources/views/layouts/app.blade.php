@@ -141,6 +141,46 @@
   <!-- Custom scripts for this template -->
   <script src="{{ asset('/js/clean-blog.min.js')}}"></script>
 
+  {{-- jQuery CDN --}}
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+  {{-- ajax code for searching posts in welcome.blade,    document.getElementById() is represented by $ --}}
+
+
+  <script type="text/javascript">
+
+    $('body').on('keyup','#searchPosts', function(){
+      var searchQuest = $(this).val();
+     $.ajax({
+        method: 'POST',
+        url: '{{ route("search-posts") }}',
+        dataType: 'json',
+        data: {
+          '_token': '{{ csrf_token() }}',
+          searchQuest: searchQuest,
+        },
+        success: function(response){
+
+          $('#searchResult').html('');
+
+          $.each(response, function(index, value){
+            var data = '<a href="/posts/ '+value.id+' "><li>'+value.title+'</li></a>';
+            $('#searchResult').append(data);
+          });
+
+
+        }
+     });
+
+    }); 
+
+    
+
+  </script>
+
+
+  
+
 </body>
 
 </html>
