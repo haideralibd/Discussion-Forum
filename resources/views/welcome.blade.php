@@ -27,7 +27,7 @@
 
       </div>
 
-      <div style="padding-left: 25px">
+      <div style="padding-left: 25px; position:absolute; z-index:-1;">
         <ul style="list-style-type:none;" id="searchResult"></ul>
       </div>
       <div>
