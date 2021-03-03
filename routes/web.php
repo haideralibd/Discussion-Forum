@@ -33,7 +33,8 @@ Route::post('/updatePost/{id}', 'PostsController@update')->middleware('auth');
 Route::get('/posts/{post}', 'PostsController@show')->name('specificPost');
 Route::post('/deletePost/{post}', 'PostsController@delete')->middleware('auth');
 
-
+Route::view('/about', 'about');
+Route::view('/contact', 'contact');
 
 
 Route::get('/categories', 'CategoryController@index');

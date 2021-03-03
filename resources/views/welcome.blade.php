@@ -6,7 +6,7 @@
     <div class="container">
       <div class="row">
         <div class="col-lg-10 col-md-10 mx-auto">
-          <div class="site-heading">
+          <div class="site-heading">  
             <h1>Any Topic, Any Issue</h1>
             <span class="subheading"><i>Discuss Them Here</i></span>
           </div>
@@ -16,27 +16,24 @@
   </header>
 
     <!-- Main Content -->
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-8 col-md-10 mx-auto">
-      <div class="input-group input-group-sm">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-sm">Search</span>
+  <div class="container " >
+    <div class="row ">
+      <div class="col-lg-8 col-md-10 mx-auto ">
+      
+      <div class="container">
+        <div class="input-group input-group-md">
+          <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="searchPosts" id="searchPosts" placeholder="Search Posts...">
         </div>
-        <input type="text" class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm" name="searchPosts" id="searchPosts" >
-
-      </div>
-
-      <div style="padding-left: 25px; position:absolute; z-index:-1;">
-        <ul style="list-style-type:none;" id="searchResult"></ul>
-      </div>
-      <div>
-              
-      </div>
+        <div style="position:absolute; z-index: 2;" >
+          <ul style="list-style-type:none;  padding:auto;" class="bg-info" id="searchResult"></ul>
+        </div>
+      </div>      
+      
+      
 
       @foreach ($posts as $post)
           
-        <div class="post-preview">
+        <div class="post-preview " style=" z-index: 1;">
         <a href="/posts/{{ $post->id }}">
             <h2 class="post-title">
               {{ $post->title }}

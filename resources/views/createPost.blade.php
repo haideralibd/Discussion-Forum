@@ -17,7 +17,7 @@
     <title>Create Article</title>
 </head>
 <body>
-    <div>
+    <div >
         <form action="/submitPost" method="post" enctype="multipart/form-data">
             @csrf
             <div class="form-group">

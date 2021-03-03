@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row mx-auto p-4"   style="margin-top: 80px; margin-bottom: 50px;" >
+<div class="row mx-auto p-4"   style="margin-top: 80px; margin-bottom: 150px;" >
     <div class="col-md-10 offset-md-1">
         <h3 class="text-muted text-center">All Posts</h3>           
         <table class="table table-hover table-bordered table-sm shadow">

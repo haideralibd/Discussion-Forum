@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Category;
 use App\Post;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Mews\Purifier\Facades\Purifier;
 
@@ -54,7 +53,7 @@ class PostsController extends Controller
         $post->category_id = $request->category;
         if($request->hasFile('image')){
 
-        $post->image = $request->file('image')->store('images', 'public');
+            $post->image = $request->file('image')->store('images/post_images', 'public');
         }
 
 
@@ -72,9 +71,8 @@ class PostsController extends Controller
         $post->updated_at = \Carbon\Carbon::now();
         
         if($request->hasFile('image')){
-
-            Storage::delete('/public/'.$post->image);
-            $post->image = $request->file('image')->store('images', 'public');
+           Storage::disk('public')->delete($post->image);
+           $post->image = $request->file('image')->store('images/post_images', 'public');
 
         }
         
@@ -88,6 +86,9 @@ class PostsController extends Controller
     {
 
         $delete = Post::find($post);
+
+        Storage::disk('public')->delete($delete->image);
+
         $delete->delete();
 
         return redirect('/allPosts');

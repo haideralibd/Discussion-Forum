@@ -27,9 +27,8 @@
 <body>
 
   <!-- Navigation -->
-  
   <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-    <div class="container">
+    <div class="container container-fluid">
       <button class="navbar-toggler navbar-toggler-right text-light" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         Menu
         <i class="fas fa-bars"></i>
@@ -40,10 +39,10 @@
             <a class="nav-link {{ Request::is('/') ? 'text-info' : '' }}" href="/">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('/about') ? 'text-info' : '' }}" href="about.html">About</a>
+            <a class="nav-link {{ Request::is('about') ? 'text-info' : '' }}" href="/about">About</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link {{ Request::is('/contact') ? 'text-info' : '' }}" href="contact.html">Contact</a>
+            <a class="nav-link {{ Request::is('contact') ? 'text-info' : '' }}" href="/contact">Contact</a>
           </li>
                         <!-- Authentication Links -->
 
@@ -95,10 +94,14 @@
   </nav>
 
   @yield('content')
+
+  @yield('about')
+
+  @yield('contact')
+
   <!-- Footer -->
   <footer>
   <hr>
-
     <div class="container">
       <div class="row">
         <div class="col-lg-8 col-md-10 mx-auto">
@@ -149,8 +152,11 @@
 
   <script type="text/javascript">
 
+/*----AJAX for searching posts in welcome.blade-----*/
+
     $('body').on('keyup','#searchPosts', function(){
       var searchQuest = $(this).val();
+      if(searchQuest != ''){
      $.ajax({
         method: 'POST',
         url: '{{ route("search-posts") }}',
@@ -164,15 +170,18 @@
           $('#searchResult').html('');
 
           $.each(response, function(index, value){
-            var data = '<a href="/posts/ '+value.id+' "><li>'+value.title+'</li></a>';
+            var data = '<a href="/posts/ '+value.id+' "><li class="text-light">'+value.title+'</li></a>';
             $('#searchResult').append(data);
           });
 
 
         }
      });
-
+      }
+      else 
+      $('#searchResult').empty();
     }); 
+     
 
     
 
